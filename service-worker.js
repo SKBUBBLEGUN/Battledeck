@@ -1,4 +1,4 @@
-const CACHE_NAME = 'battledeck-shell-v1';
+const CACHE_NAME = 'battledeck-shell-v2';
 const APP_FILES = ['./', './index.html', './style.css', './script.js', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', (event) => {
