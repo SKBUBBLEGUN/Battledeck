@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#14080c">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Battledeck">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Battledeck Launcher</title>
+</head>
+<body>
+  <main id="deck">
+
+    <!-- TOPO -->
+    <header class="top">
+      <div class="top-row">
+        <div class="top-title">
+          <svg class="logo" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5zm0 4.2L6.6 9.3v5.4l5.4 3.1 5.4-3.1V9.3L12 6.2z"/></svg>
+          <span>05 KILO MICROCYBER BATTLEDECK V02</span>
+        </div>
+        <svg class="barcode top-barcode" id="bc-top" aria-hidden="true"></svg>
+      </div>
+      <div class="scan">
+        <div class="scan-bar" id="scan-bar">
+          <span>SCANNING ...</span><b id="scan-pct">0%</b>
+        </div>
+        <small id="scan-files">0 / 1440 FILES</small>
+      </div>
+    </header>
+
+    <!-- DATA -->
+    <section class="date-row">
+      <div class="day" id="day">5</div>
+      <div class="date-text">
+        <strong id="date-label" title="Toque para editar">CYBERDECK</strong>
+        <span id="date-full">—</span>
+      </div>
+      <button class="plus" id="btn-add" aria-label="Adicionar atalho">+</button>
+    </section>
+
+    <!-- RÉGUA ESQUERDA -->
+    <aside class="ruler" id="ruler" aria-hidden="true">
+      <div class="marker"><span class="bar"></span><span class="tri"></span></div>
+    </aside>
+
+    <!-- LISTRAS DIREITA -->
+    <div class="hatch" aria-hidden="true"></div>
+
+    <!-- ANÉIS DECORATIVOS -->
+    <svg class="rings" viewBox="0 0 300 300" aria-hidden="true">
+      <circle cx="210" cy="210" r="140" />
+      <circle cx="210" cy="210" r="100" />
+      <circle cx="210" cy="210" r="60" />
+    </svg>
+
+    <!-- DOCK DE APPS -->
+    <nav class="dock" id="dock" aria-label="Aplicativos"></nav>
+
+    <!-- RODAPÉ -->
+    <footer class="foot">
+      <p class="notice">ONLY CERTIFIED OPERATORS<br>ARE ALLOWED TO MANIPULATE,<br>ACCESS OR DISABLE THIS<br>DEVICE</p>
+      <svg class="barcode foot-barcode" id="bc-foot" aria-hidden="true"></svg>
+      <p class="prompt">ROOT@BATTLEDECK : ~ # <i class="cursor">█</i></p>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="overlay" id="overlay" hidden>
+      <section class="panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <header class="panel-head">
+          <h2 id="modal-title">—</h2>
+          <button class="close" id="modal-close" aria-label="Fechar">✕</button>
+        </header>
+        <div class="panel-body" id="modal-body"></div>
+      </section>
+    </div>
+
+    <input type="file" id="cam-input" accept="image/*" capture="environment" hidden>
+  </main>
+
+  <script src="script.js" defer></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(() => {}));
+    }
+  </script>
+
+</body>
+</html>
