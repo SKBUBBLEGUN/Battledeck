@@ -310,7 +310,7 @@
     const rest = d.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' }).toUpperCase();
     const hh = String(d.getHours()).padStart(2, '0');
     const mm = String(d.getMinutes()).padStart(2, '0');
-    $('#day').textContent = d.getDay() || 7; // segunda = 1 ... domingo = 7
+    $('#day').textContent = d.getDate(); // dia do mês, de 1 a 31
     $('#date-full').textContent = `${wd}, ${rest} · ${hh}:${mm}`;
   }
   updateDate();
